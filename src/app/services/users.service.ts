@@ -26,7 +26,7 @@ export class UsersService {
     }));
   }
 
-  public addContact(contact: IUser) {
+  public addUser(contact: IUser) {
     this.users.push(contact);
   }
 }

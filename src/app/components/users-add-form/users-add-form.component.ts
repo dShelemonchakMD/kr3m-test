@@ -1,6 +1,8 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 import { IUser, User } from "../../models/user.models";
+import {UsersService} from "../../services/users.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-users-add-form',
@@ -14,7 +16,7 @@ export class UsersAddFormComponent implements OnInit {
 
   newUser: IUser = new User();
 
-  constructor() { }
+  constructor(private usersService: UsersService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -22,6 +24,8 @@ export class UsersAddFormComponent implements OnInit {
   submitForm() {
     this.formRef?.nativeElement?.classList.add('was-validated');
     if (this.newUserForm?.valid) {
+      this.usersService.addUser(this.newUser);
+      this.router.navigate(['']);
     }
   }
 
