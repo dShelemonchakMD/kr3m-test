@@ -1,0 +1,9 @@
+<th scope="row">
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+    <label class="form-check-label" for="flexCheckDefault"></label>
+  </div>
+</th>
+<td class="table-body-element p-2" *ngFor="let column of tableColumns">
+  <ng-container>{{user?.[column.fieldName]}}</ng-container>
+</td>

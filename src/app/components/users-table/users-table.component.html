@@ -1,0 +1,20 @@
+<div class="contact-table">
+  <div class="mt-3 mb-4">
+    <h2>User contacts</h2>
+  </div>
+
+  <app-users-table-header class="" [(search)]="search"></app-users-table-header>
+  <table class="table mt-2">
+    <thead>
+    <tr>
+      <th class="table-header-element p-2"></th>
+      <th *ngFor="let column of tableColumns" scope="col">{{column.label}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr app-users-table-row *ngFor="let user of getPageOfUsers()" [tableColumns]="tableColumns" [user]="user"></tr>
+    </tbody>
+  </table>
+
+  <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="filteredUsers.length"></ngb-pagination>
+</div>
